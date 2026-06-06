@@ -1,0 +1,357 @@
+:root {
+    /* Colori ufficiali forniti dal logo */
+    --logo-blue: #054288;
+    --logo-grad-start: #F5F3F2;
+    --logo-grad-end: #ECEBE9;
+
+    /* Nuovi colori testuali eleganti (Nero morbido) */
+    --text-main: #2b2b2b;
+    --text-body: #444444;
+
+    /* Elementi di sistema */
+    --primary-color: var(--logo-blue);
+    --secondary-color: #b8926a;
+    /* Oro brunito per dettagli eleganti */
+    --bg-white: #ffffff;
+
+    --font-title: 'Playfair Display', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --transition: all 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-body);
+    background-color: var(--bg-white);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* TIPOGRAFIA */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-title);
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+p {
+    color: var(--text-body);
+}
+
+/* NAVBAR */
+header {
+    background-color: rgba(255, 255, 255, 0.97);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    justify-content: center;
+}
+
+.logo-img {
+    height: 100px;
+    margin-bottom: 2rem;
+}
+
+.logo-text {
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.logo-text span {
+    color: var(--secondary-color);
+}
+
+.nav-link-custom {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    letter-spacing: 0.5px;
+}
+
+.nav-link-custom:hover {
+    color: var(--secondary-color);
+}
+
+/* HERO SECTION - Resa chiara, luminosa e con il gradiente del logo */
+.hero {
+    padding: 180px 0 110px 0;
+    background: #EDEEE9;
+    color: var(--text-main);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    color: var(--text-main);
+    font-size: 2.3rem;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.hero .subtitle {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    color: var(--secondary-color);
+    /* Oro brunito per staccare dal testo scuro */
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.hero p {
+    color: var(--text-body);
+    font-size: 1.05rem;
+}
+
+/* BOTTONI - Il blu rimane forte qui per attirare l'attenzione */
+.btn-custom {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(5, 66, 136, 0.15);
+    font-size: 0.95rem;
+}
+
+.btn-custom:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.btn-outline-custom {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-outline-custom:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* SEZIONI E STRUTTURE DIVISORIE */
+section {
+    padding: 95px 0;
+}
+
+.section-title {
+    font-size: 2.1rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: var(--secondary-color);
+}
+
+.section-title-left::after {
+    left: 0;
+    transform: translateX(0);
+}
+
+.section-subtitle {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--secondary-color);
+    /* Sostituito il blu con l'oro brunito per alleggerire */
+    font-weight: 700;
+    opacity: 0.9;
+}
+
+.chi-sono-img {
+    max-width: 400px;
+    border-radius: 4px;
+}
+
+/* CARDS - Effetti hover ammorbiditi */
+.card-approccio {
+    background-color: var(--bg-white);
+    padding: 40px 30px;
+    border-radius: 6px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+    border-top: 3px solid transparent;
+    transition: var(--transition);
+}
+
+.card-approccio:hover {
+    transform: translateY(-5px);
+    border-top-color: var(--primary-color);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+.card-approccio h3 {
+    font-size: 1.4rem;
+}
+
+.card-area {
+    padding: 40px;
+    background-color: var(--bg-white);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: var(--transition);
+}
+
+.card-area:hover {
+    border-color: var(--secondary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+.card-area h3 {
+    font-size: 1.4rem;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.card-area:hover h3 {
+    color: var(--primary-color);
+}
+
+/* LISTE E ELEMENTI DECORATIVI */
+.esperienze-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.esperienze-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    color: var(--text-body);
+}
+
+.esperienze-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0px;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    top: -10px;
+}
+
+.tag {
+    background-color: var(--bg-white);
+    color: var(--text-main);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.tag:hover {
+    border-color: var(--secondary-color);
+    color: var(--primary-color);
+    background-color: var(--logo-grad-start);
+}
+
+/* ALTERNANZA SFONDI SEZIONI */
+.bg-section-flat {
+    background-color: var(--bg-white);
+}
+
+.bg-section-gradient {
+    background: linear-gradient(180deg, var(--logo-grad-start) 0%, var(--logo-grad-end) 100%);
+}
+
+/* CTA FINALE - Sfondo chiaro, testo scuro */
+.cta-finale {
+    background-color: var(--bg-white);
+    padding: 100px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.cta-finale h2 {
+    font-size: 2.2rem;
+}
+
+.cta-finale p {
+    font-size: 1.1rem;
+}
+
+/* FOOTER - Unica sezione blu scura per ancorare il design */
+footer {
+    background-color: #021a36;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 40px 0;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer a {
+    color: #8cb6e6;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+/* STRUTTURA FORM MODALE */
+.form-control-custom {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(5, 66, 136, 0.15);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.form-control-custom:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 65px 0;
+    }
+}
