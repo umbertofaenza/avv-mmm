@@ -96,27 +96,44 @@ header {
 
 /* HERO SECTION - Resa chiara, luminosa e con il gradiente del logo */
 .hero {
-    padding: 180px 0 110px 0;
+    padding: 160px 0 100px 0;
     background: #EDEEE9;
     color: var(--text-main);
     position: relative;
     overflow: hidden;
 }
 
-.hero h1 {
+.hero .hero-label {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--primary-color);
+}
+
+.hero-name {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1.15;
+}
+
+.hero-tagline {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 700;
     color: var(--text-main);
-    font-size: 2.3rem;
-    line-height: 1.2;
-    font-weight: 600;
+    line-height: 1.35;
 }
 
 .hero .subtitle {
     font-family: var(--font-body);
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     color: var(--secondary-color);
-    /* Oro brunito per staccare dal testo scuro */
     font-weight: 500;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .hero p {
@@ -347,8 +364,12 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2rem;
+    .hero-name {
+        font-size: 2.2rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.25rem;
     }
 
     .hero .subtitle {
