@@ -59,6 +59,10 @@ header {
     justify-content: center;
 }
 
+.navbar {
+    width: 100%;
+}
+
 .logo-img {
     height: 100px;
     margin-bottom: 2rem;
