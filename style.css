@@ -242,17 +242,14 @@ section {
 }
 
 .card-area {
-    padding: 40px;
-    background-color: var(--bg-white);
+    padding: 0px 40px;
+    background-color: transparent;
     border-radius: 6px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
     transition: var(--transition);
 }
 
 .card-area:hover {
-    border-color: var(--secondary-color);
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
 }
 
 .card-area h3 {
@@ -262,6 +259,11 @@ section {
 }
 
 .card-area:hover h3 {
+    color: var(--primary-color);
+}
+
+.card-area-icon {
+    font-size: 2rem;
     color: var(--primary-color);
 }
 
