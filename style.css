@@ -1,429 +1,763 @@
+/* =========================================================
+   Avv. Maria Mercedes Maniglia — variante "documento"
+   Nessuna colonna di margine: la struttura è orizzontale.
+   Ogni sezione si apre con un filetto-capitolo che si riempie
+   di blu man mano che la pagina avanza.
+   ========================================================= */
+
 :root {
-    /* Colori ufficiali forniti dal logo */
-    --logo-blue: #054288;
-    --logo-grad-start: #F5F3F2;
-    --logo-grad-end: #ECEBE9;
+    --ink: #054288;
+    --ink-deep: #021a36;
 
-    /* Nuovi colori testuali eleganti (Nero morbido) */
-    --text-main: #2b2b2b;
-    --text-body: #444444;
+    --text-main: #22252A;
+    --text-body: #42474E;
 
-    /* Elementi di sistema */
-    --primary-color: var(--logo-blue);
-    --secondary-color: #b8926a;
-    /* Oro brunito per dettagli eleganti */
-    --bg-white: #ffffff;
+    --white: #ffffff;
+    /* rosa appena accennato, dalla carta del biglietto da visita */
+    --paper: #F8F1EF;
+    --paper-deep: #F0E6E3;
 
-    --font-title: 'Playfair Display', serif;
-    --font-body: 'Plus Jakarta Sans', sans-serif;
-    --transition: all 0.3s ease;
+    /* bruno-rosato, stessa famiglia della carta */
+    --accent: #7E4F4A;
+
+    --rule: rgba(5, 66, 136, 0.16);
+    --rule-soft: rgba(34, 37, 42, 0.10);
+
+    --font-display: 'Spectral', Georgia, serif;
+    --font-body: 'Archivo', system-ui, sans-serif;
+
+    --sec-pad: clamp(4.5rem, 9vw, 8rem);
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
+
+/* ---------- Base ---------- */
 
 html {
     scroll-behavior: smooth;
 }
 
-body {
-    font-family: var(--font-body);
-    color: var(--text-body);
-    background-color: var(--bg-white);
-    line-height: 1.7;
-    font-size: 16px;
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
-/* TIPOGRAFIA */
+body {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text-body);
+    background-color: var(--white);
+    -webkit-font-smoothing: antialiased;
+}
+
 h1,
 h2,
 h3,
 h4 {
-    font-family: var(--font-title);
+    font-family: var(--font-display);
+    font-weight: 600;
     color: var(--text-main);
-    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 p {
     color: var(--text-body);
 }
 
-/* NAVBAR */
+strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+a {
+    color: var(--ink);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 2000;
+    padding: 12px 20px;
+    background: var(--ink);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    left: 12px;
+    top: 12px;
+}
+
+/* ---------- Navbar ---------- */
+
 header {
-    background-color: rgba(255, 255, 255, 0.97);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+    background-color: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(10px);
-
-    display: flex;
-    justify-content: center;
+    border-bottom: 1px solid var(--rule-soft);
 }
 
-.navbar {
-    width: 100%;
-}
-
-.logo-img {
-    height: 100px;
-    margin-bottom: 2rem;
-}
-
-.logo-text {
-    font-family: var(--font-title);
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--primary-color);
+.brand {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
     text-decoration: none;
-    letter-spacing: 0.5px;
 }
 
-.logo-text span {
-    color: var(--secondary-color);
+.brand:hover {
+    color: var(--ink);
 }
 
 .nav-link-custom {
-    text-decoration: none;
-    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
     font-weight: 600;
-    font-size: 0.9rem;
-    transition: var(--transition);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.04em;
+    color: var(--text-main);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
 }
 
 .nav-link-custom:hover {
-    color: var(--secondary-color);
+    color: var(--ink);
+    border-bottom-color: var(--ink);
 }
 
 .navbar-toggler:focus {
     box-shadow: none;
 }
 
-/* HERO SECTION - Resa chiara, luminosa e con il gradiente del logo */
-.hero {
-    padding: 160px 0 100px 0;
-    background: #EDEEE9;
-    color: var(--text-main);
-    position: relative;
-    overflow: hidden;
+/* ---------- Sezioni ---------- */
+
+/* Bootstrap porterebbe il contenitore a 1320px: troppo per una colonna
+   di testo leggibile, lascerebbe vuoto strutturale ai lati */
+@media (min-width: 1400px) {
+    .container-lg {
+        max-width: 1140px;
+    }
 }
 
-.hero .hero-label {
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--primary-color);
+.sec {
+    padding: var(--sec-pad) 0;
 }
 
-.hero-name {
-    font-family: var(--font-title);
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    line-height: 1.15;
+.sec--white {
+    background-color: var(--white);
 }
 
-.hero-tagline {
-    font-family: var(--font-title);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-main);
-    line-height: 1.35;
+.sec--paper {
+    background-color: var(--paper);
 }
 
-.hero .subtitle {
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    color: var(--secondary-color);
-    font-weight: 500;
-    line-height: 1.7;
+.sec--hero {
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+    padding-top: clamp(9rem, 16vw, 13rem);
 }
 
-.hero p {
-    color: var(--text-body);
-    font-size: 1.05rem;
-}
+/* ---------- Filetto-capitolo ---------- */
 
-/* BOTTONI - Il blu rimane forte qui per attirare l'attenzione */
-.btn-custom {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: var(--primary-color);
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    border: 1px solid var(--primary-color);
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(5, 66, 136, 0.15);
-    font-size: 0.95rem;
-}
-
-.btn-custom:hover {
-    background-color: transparent;
-    color: var(--primary-color);
-}
-
-.btn-outline-custom {
-    background-color: transparent;
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    padding: 8px 20px;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.btn-outline-custom:hover {
-    background-color: var(--primary-color);
-    color: #ffffff;
-}
-
-/* SEZIONI E STRUTTURE DIVISORIE */
-section {
-    padding: 95px 0;
-}
-
-.section-title {
-    font-size: 2.1rem;
-    position: relative;
-    padding-bottom: 15px;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 2px;
-    background-color: var(--secondary-color);
-}
-
-.section-title-left::after {
-    left: 0;
-    transform: translateX(0);
-}
-
-.section-subtitle {
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    color: var(--secondary-color);
-    /* Sostituito il blu con l'oro brunito per alleggerire */
-    font-weight: 700;
-    opacity: 0.9;
-}
-
-.competenze-col {
-    max-width: 500px;
-}
-
-.chi-sono-img {
-    max-width: 400px;
-    border-radius: 4px;
-}
-
-/* CARDS - Effetti hover ammorbiditi */
-.card-approccio {
-    background-color: var(--bg-white);
-    padding: 40px 30px;
-    border-radius: 6px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-    border-top: 3px solid transparent;
-    transition: var(--transition);
-}
-
-.card-approccio:hover {
-    transform: translateY(-5px);
-    border-top-color: var(--primary-color);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
-}
-
-.card-approccio h3 {
-    font-size: 1.4rem;
-}
-
-.card-area {
-    padding: 20px 40px;
-    background-color: transparent;
-    border-radius: 6px;
-    transition: var(--transition);
-}
-
-.card-area:hover {
-    transform: translateY(-5px);
-}
-
-.card-area h3 {
-    font-size: 1.4rem;
-    color: var(--text-main);
-    transition: var(--transition);
-}
-
-.card-area:hover h3 {
-    color: var(--primary-color);
-}
-
-.card-area-icon {
-    font-size: 2rem;
-    color: var(--primary-color);
-}
-
-.hero-inner {
-    max-width: 750px;
-}
-
-.card-contatto {
-    padding: 35px 25px;
-    background-color: var(--bg-white);
-    border-radius: 6px;
-    border-top: 3px solid transparent;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+.sec-head {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    transition: var(--transition);
-    overflow-wrap: break-word;
-    word-break: break-word;
+    gap: 0.9rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
-.card-contatto:hover {
-    transform: translateY(-5px);
-    border-top-color: var(--primary-color);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+/* Solo il segmento pieno sotto il sopratitolo, identico in ogni sezione */
+.sec-rule {
+    width: 88px;
+    height: 2px;
+    background-color: var(--ink);
 }
 
-/* LISTE E ELEMENTI DECORATIVI */
-.esperienze-list {
-    list-style: none;
-    padding-left: 0;
-}
+/* ---------- Tipografia ---------- */
 
-.esperienze-list li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 15px;
-    color: var(--text-body);
-}
-
-.esperienze-list li::before {
-    content: '•';
-    position: absolute;
-    left: 0px;
-    color: var(--secondary-color);
-    font-size: 1.5rem;
-    top: -10px;
-}
-
-.tag {
-    background-color: var(--bg-white);
-    color: var(--text-main);
-    padding: 8px 18px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-}
-
-.tag:hover {
-    border-color: var(--secondary-color);
-    color: var(--primary-color);
-    background-color: var(--logo-grad-start);
-}
-
-/* ALTERNANZA SFONDI SEZIONI */
-.bg-section-flat {
-    background-color: var(--bg-white);
-}
-
-.bg-section-gradient {
-    background: linear-gradient(180deg, var(--logo-grad-start) 0%, var(--logo-grad-end) 100%);
-}
-
-/* CTA FINALE - Sfondo chiaro, testo scuro */
-.cta-finale {
-    background-color: var(--bg-white);
-    padding: 100px 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.cta-finale h2 {
-    font-size: 2.2rem;
-}
-
-.cta-finale p:not(.section-subtitle) {
-    font-size: 1.1rem;
-}
-
-.cta-finale .card-contatto p {
-    font-size: 0.95rem;
-}
-
-/* FOOTER - Unica sezione blu scura per ancorare il design */
-footer {
-    background-color: #021a36;
-    color: rgba(255, 255, 255, 0.6);
-    padding: 40px 0;
-    font-size: 0.85rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-footer a {
-    color: #8cb6e6;
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-footer a:hover {
-    color: #ffffff;
-}
-
-/* STRUTTURA FORM MODALE */
-.form-control-custom {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid rgba(5, 66, 136, 0.15);
-    border-radius: 4px;
+.eyebrow {
+    margin: 0;
     font-family: var(--font-body);
-    transition: var(--transition);
-    font-size: 0.95rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
 }
 
-.form-control-custom:focus {
-    outline: none;
-    border-color: var(--primary-color);
+.display-name {
+    margin: 0.75rem auto 1.5rem;
+    font-size: clamp(2.4rem, 6.5vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    max-width: 16ch;
 }
 
-/* BOTTONE TORNA SU */
+.lede {
+    max-width: 34ch;
+    margin: 0 auto 2.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--text-main);
+}
+
+.sec-title {
+    margin: 0 auto 1.75rem;
+    font-size: clamp(1.9rem, 3.8vw, 2.7rem);
+    line-height: 1.15;
+    max-width: 24ch;
+    text-align: center;
+}
+
+.sub-title {
+    margin: 3.5rem 0 0;
+    font-size: 1.35rem;
+    text-align: center;
+}
+
+/* Blocco centrato, testo allineato a sinistra: il vuoto simmetrico
+   si legge come margine, il testo resta scorrevole */
+.measure {
+    max-width: 62ch;
+    margin-inline: auto;
+}
+
+.measure p {
+    margin-bottom: 1.25rem;
+}
+
+.measure p:last-child {
+    margin-bottom: 0;
+}
+
+.measure--center {
+    text-align: center;
+}
+
+/* Colonna singola larga, entro un limite di riga leggibile */
+.measure--wide {
+    max-width: 90ch;
+    font-size: 1.18rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Paragrafo singolo: corpo più grande, così la stessa quantità di testo
+   occupa più larghezza senza allungare la riga in caratteri */
+.measure--lead {
+    max-width: 78ch;
+    font-size: 1.18rem;
+    line-height: 1.6;
+}
+
+/* ---------- Hero ---------- */
+
+.sec--hero .container-lg {
+    text-align: center;
+}
+
+.percorso-words {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem clamp(1rem, 3vw, 2.25rem);
+    margin: 0 0 2.75rem;
+    padding: 0;
+    list-style: none;
+}
+
+.percorso-words li {
+    position: relative;
+    padding-top: 0.9rem;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-main);
+    /* più larga della parola più lunga: i tre filetti restano identici */
+    min-width: 7rem;
+}
+
+.percorso-words li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--ink);
+}
+
+/* Su schermi stretti la riga andrebbe a capo 2+1: tre colonne uguali
+   le tengono sempre affiancate, fino a 320px */
+@media (max-width: 767px) {
+    .percorso-words {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        max-width: 22rem;
+        margin-inline: auto;
+    }
+
+    .percorso-words li {
+        min-width: 0;
+    }
+}
+
+/* ---------- Bottone ---------- */
+
+.btn-ink {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: var(--ink);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.btn-ink:hover {
+    background-color: transparent;
+    color: var(--ink);
+}
+
+/* ---------- Step numerati ---------- */
+
+.steps {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.step {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+    padding: 2.25rem 0;
+    border-top: 1px solid var(--rule-soft);
+}
+
+.step:first-child {
+    margin-top: 1.75rem;
+}
+
+.figure {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--ink);
+}
+
+/* nessun cap: il testo riempie la colonna, così il blocco degli step
+   risulta pieno e otticamente centrato sotto il titolo */
+.step-body {
+    max-width: none;
+}
+
+.step-body h4 {
+    margin: 0 0 0.8rem;
+    font-size: 1.3rem;
+}
+
+.step-body p {
+    margin-bottom: 0.9rem;
+}
+
+.step-body p:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .step {
+        grid-template-columns: 5rem minmax(0, 1fr);
+        row-gap: 0;
+        column-gap: 2.75rem;
+    }
+
+    .figure {
+        text-align: right;
+    }
+}
+
+/* ---------- Prezzo ---------- */
+
+.price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    max-width: 960px;
+    margin: 2.5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+}
+
+.price-label {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.price-value {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 6vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--ink);
+}
+
+/* ---------- Fasi del percorso ---------- */
+
+.fasi {
+    margin: clamp(3.5rem, 6vw, 5.5rem) 0 3rem;
+    padding: 0;
+    list-style: none;
+}
+
+.fase {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--rule-soft);
+}
+
+.fase:last-child {
+    border-bottom: 1px solid var(--rule-soft);
+}
+
+.fase-when {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding-top: 0.35rem;
+}
+
+.fase-body {
+    max-width: 62ch;
+}
+
+.fase h3 {
+    margin: 0 0 0.6rem;
+    font-size: 1.35rem;
+}
+
+.fase p {
+    margin: 0;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .fase {
+        grid-template-columns: 7rem minmax(0, 1fr);
+        row-gap: 0;
+        column-gap: 2.75rem;
+    }
+}
+
+/* Su desktop le tre fasi diventano colonne affiancate: la progressione
+   nel tempo si legge da sinistra a destra e occupa tutta la larghezza */
+@media (min-width: 992px) {
+    .fasi {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: 2.5rem;
+    }
+
+    .fase {
+        display: block;
+        padding: 1.5rem 0 0;
+        border-top: 2px solid var(--ink);
+    }
+
+    .fase:last-child {
+        border-bottom: none;
+    }
+
+    .fase-when {
+        display: block;
+        padding-top: 0;
+        margin-bottom: 0.75rem;
+    }
+}
+
+/* ---------- Chi sono ---------- */
+
+.bio {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+}
+
+.bio-text {
+    max-width: 62ch;
+}
+
+.bio-text p {
+    margin-bottom: 1.25rem;
+}
+
+.bio-close {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--text-main);
+}
+
+.bio-figure {
+    margin: 0;
+}
+
+.bio-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 420px;
+}
+
+@media (min-width: 992px) {
+    /* sopratitolo e filetto a sinistra, allineati al titolo sotto */
+    #chi-sono .sec-head {
+        align-items: flex-start;
+    }
+
+    /* qui il titolo apre la colonna di testo, non la sezione:
+       centrarlo lo staccherebbe dal paragrafo che introduce */
+    .bio .sec-title {
+        margin-left: 0;
+        text-align: left;
+        max-width: 18ch;
+    }
+
+    .bio {
+        grid-template-columns: minmax(0, 1fr) 380px;
+        column-gap: 4rem;
+        align-items: start;
+    }
+
+    .bio-figure {
+        position: sticky;
+        top: 120px;
+        border-top: 2px solid var(--ink);
+        padding-top: 1.25rem;
+    }
+}
+
+/* ---------- Card: unica sezione che le tiene ---------- */
+
+.cards {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.card-principio {
+    padding: 2.25rem 1.75rem;
+    background-color: var(--white);
+    border-top: 2px solid var(--ink);
+}
+
+/* non chiamarla .mark: in Bootstrap è l'evidenziatore giallo */
+.principio-mark {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+}
+
+.card-principio h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
+}
+
+.card-principio p {
+    margin: 0;
+}
+
+/* ---------- Aree di attività ---------- */
+
+.aree {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 2.5rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.aree li {
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--rule-soft);
+}
+
+.aree h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+}
+
+.aree p {
+    margin: 0;
+    max-width: 54ch;
+}
+
+@media (min-width: 768px) {
+    .aree {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 3.5rem;
+    }
+}
+
+/* ---------- Contatti ---------- */
+
+.contatti {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 2.5rem 0 0;
+}
+
+.contatti>div {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+}
+
+.contatti dt {
+    margin-bottom: 0.35rem;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.contatti dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    color: var(--text-main);
+    /* break-word e non anywhere: spezza solo se serve e mai a metà
+       parola quando esiste un punto di rottura migliore (il <wbr> dopo @) */
+    overflow-wrap: break-word;
+}
+
+.contatti a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 0.25s var(--ease);
+}
+
+.contatti a:hover {
+    border-bottom-color: var(--ink);
+}
+
+.contatti address {
+    margin: 0;
+    font-style: normal;
+}
+
+@media (min-width: 768px) {
+    .contatti {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 3.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .contatti {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: 3rem;
+    }
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+    padding: 3rem 0;
+    background-color: var(--ink-deep);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
+
+footer p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+/* ---------- Torna su ---------- */
+
 .scroll-top {
     position: fixed;
-    bottom: 24px;
     right: 24px;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: none;
-    background-color: var(--primary-color);
-    color: #ffffff;
-    font-size: 1.2rem;
-    cursor: pointer;
+    bottom: 24px;
+    z-index: 999;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(5, 66, 136, 0.25);
+    width: 46px;
+    height: 46px;
+    border: 1px solid var(--ink);
+    background-color: var(--ink);
+    color: #fff;
+    cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
-    transition: var(--transition);
-    z-index: 999;
+    transform: translateY(8px);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease),
+        visibility 0.3s var(--ease), background-color 0.25s var(--ease),
+        color 0.25s var(--ease);
 }
 
 .scroll-top.show {
@@ -433,8 +767,11 @@ footer a:hover {
 }
 
 .scroll-top:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--white);
+    color: var(--ink);
 }
+
+/* ---------- Mobile ---------- */
 
 @media (max-width: 991px) {
     .container-lg {
@@ -442,50 +779,19 @@ footer a:hover {
         padding-right: 24px;
     }
 
-    .section-title-left::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .competenze-col {
+    .display-name {
         max-width: none;
-    }
-
-    .chi-sono-img {
-        max-width: 100%;
     }
 }
 
 @media (max-width: 400px) {
-    .logo-text {
-        font-size: 1.05rem;
+    .brand {
+        font-size: 1.02rem;
     }
 }
 
-@media (max-width: 350px) {
-    .logo-text {
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero {
-        padding: 120px 0 70px 0;
-    }
-
-    .hero-name {
-        font-size: 2.2rem;
-    }
-
-    .hero-tagline {
-        font-size: 1.25rem;
-    }
-
-    .hero .subtitle {
-        font-size: 1rem;
-    }
-
-    section {
-        padding: 65px 0;
+@media (max-width: 340px) {
+    .brand {
+        font-size: 0.88rem;
     }
 }

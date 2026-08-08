@@ -6,252 +6,373 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avv. Maria Mercedes Maniglia</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400..700;1,400&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <a class="skip-link" href="#main">Vai al contenuto</a>
+
     <header>
         <nav class="navbar navbar-expand-lg py-3">
             <div class="container-lg">
-                <a class="navbar-brand logo-text" href="#">Maria Mercedes Maniglia</a>
+                <a class="navbar-brand brand" href="#">Maria Mercedes Maniglia</a>
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navMenuStudio">
+                    data-bs-target="#navMenuStudio" aria-controls="navMenuStudio" aria-expanded="false"
+                    aria-label="Apri il menu di navigazione">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navMenuStudio">
-                    <ul
-                        class="navbar-nav align-items-center gap-3 gap-lg-4 mt-3 mt-lg-0 justify-content-end text-center">
+                    <ul class="navbar-nav align-items-lg-center gap-2 gap-lg-4 mt-3 mt-lg-0">
                         <li class="nav-item"><a href="#" class="nav-link-custom">Home</a></li>
+                        <li class="nav-item"><a href="#consulenze" class="nav-link-custom">Consulenze Online</a></li>
                         <li class="nav-item"><a href="#chi-sono" class="nav-link-custom">Chi Sono</a></li>
                         <li class="nav-item"><a href="#approccio" class="nav-link-custom">Approccio</a></li>
                         <li class="nav-item"><a href="#aree" class="nav-link-custom">Aree di Attività</a></li>
-                        <li class="nav-item"><a href="#esperienza" class="nav-link-custom">Esperienza</a></li>
                         <li class="nav-item"><a href="#contatti" class="nav-link-custom">Contatti</a></li>
-                        <!-- <li class="nav-item mt-2 mt-lg-0">
-                            <a href="#contatti" class="btn-outline-custom d-block d-lg-inline-block"
-                                data-bs-toggle="modal" data-bs-target="#contactModal">Contatti</a>
-                        </li> -->
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- HERO -->
-    <section class="hero text-center d-flex align-items-center">
-        <div class="container-lg">
-            <div class="hero-inner d-flex flex-column align-items-center mx-auto">
-                <p class="hero-label mb-1">Avvocato</p>
-                <h1 class="hero-name mb-5">Maria Mercedes Maniglia</h1>
-                <h2 class="hero-tagline mb-4">Tutela consapevole nei conflitti familiari</h2>
-                <p class="subtitle mb-5">Assistenza legale in diritto di famiglia e tutela dei minori, con un approccio
-                    concreto e orientato alla soluzione delle controversie</p>
-                <a href="#contatti">
-                    <button class="btn-custom">Prenota una
-                        consulenza</button>
-                </a>
+    <main id="main">
+
+        <!-- HERO -->
+        <section class="sec sec--hero">
+            <div class="container-lg">
+                <p class="eyebrow">Avvocato</p>
+                <h1 class="display-name">Maria Mercedes Maniglia</h1>
+                <p class="lede">Diritto di famiglia, tutela dei minori e mediazione familiare</p>
+
+                <ul class="percorso-words" aria-label="Le fasi in cui offro assistenza">
+                    <li>Prima</li>
+                    <li>Durante</li>
+                    <li>Dopo</li>
+                </ul>
+
+                <a href="#consulenze" class="btn-ink">Prenota una consulenza</a>
             </div>
-        </div>
-    </section>
-    <!-- CHI SONO -->
-    <section id="chi-sono" class="bg-section-flat">
-        <div class="container-lg">
-            <div class="row justify-content-center align-items-center gx-4 gx-lg-5">
+        </section>
 
-                <div class="col-12 col-md-6 col-xxl-5 mb-5 mb-md-0">
-                    <h2 class="section-title section-title-left mb-3 text-center text-md-start d-none d-md-block">Chi
-                        Sono</h2>
-                    <h2 class="section-title mb-3 text-center d-md-none">Chi Sono</h2>
-                    <p class="section-subtitle mb-4 text-center text-md-start">Avv. Maria Mercedes Maniglia</p>
+        <!-- CONSULENZE ONLINE -->
+        <section id="consulenze" class="sec sec--white">
+            <div class="container-lg">
+                <div class="sec-head">
+                    <p class="eyebrow">Consulenze</p>
+                    <span class="sec-rule" aria-hidden="true"></span>
+                </div>
 
-                    <div>
-                        <p class="mb-4">Sono un <strong>avvocato civilista</strong>, laureata all'Università degli Studi
-                            di Salerno, con specializzazione nel diritto di famiglia e nella tutela dei minori.</p>
+                <h2 class="sec-title">Consulenze legali online</h2>
 
-                        <p class="mb-4">Nel mio lavoro mi occupo di separazioni, divorzi e controversie familiari, con
-                            particolare attenzione alla gestione consapevole del conflitto e alla protezione dei
-                            soggetti più vulnerabili.</p>
+                <div class="measure measure--wide">
+                    <p>Ti supporto nell'affrontare separazioni, divorzi, affidamento dei figli, amministrazione di
+                        sostegno e decisioni legate alla cura dei genitori o di altri familiari fragili.</p>
+                    <p>Ogni consulenza è un momento di confronto diretto e riservato per offrirti orientamento
+                        giuridico, individuare le soluzioni più adatte alla tua situazione e consentirti di compiere
+                        scelte consapevoli.</p>
+                    <p>Il servizio di consulenza online ti permette di ricevere assistenza legale qualificata anche a
+                        distanza, attraverso uno spazio dedicato all'ascolto e all'analisi del caso.</p>
+                </div>
 
-                        <p class="mb-0">Accanto all'attività forense, svolgo anche attività di <strong>mediazione
-                                familiare</strong> e opero in contesti di collaborazione interdisciplinare nei
-                            procedimenti che coinvolgono minori.</p>
+                <h3 class="sub-title">Come funziona la consulenza online</h3>
+
+                <ol class="steps">
+                    <li class="step">
+                        <span class="figure" aria-hidden="true">1</span>
+                        <div class="step-body">
+                            <h4>Richiesta di appuntamento</h4>
+                            <p>Per richiedere una consulenza è sufficiente inviare una richiesta tramite e-mail,
+                                indicando brevemente la situazione familiare per la quale desideri ricevere assistenza.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <span class="figure" aria-hidden="true">2</span>
+                        <div class="step-body">
+                            <h4>Conferma della consulenza</h4>
+                            <p>Dopo aver ricevuto la richiesta, verranno concordati giorno e orario dell'appuntamento e
+                                ti saranno comunicate le modalità di pagamento.</p>
+                            <p>Il compenso della consulenza dovrà essere corrisposto anticipatamente tramite bonifico
+                                bancario. La consulenza sarà confermata alla ricezione della ricevuta del pagamento.</p>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <span class="figure" aria-hidden="true">3</span>
+                        <div class="step-body">
+                            <h4>Incontro online</h4>
+                            <p>La consulenza ha una durata di circa 50 minuti. Durante l'incontro analizzeremo la tua
+                                situazione, valuteremo gli aspetti giuridici rilevanti e individueremo il percorso più
+                                adatto alle tue esigenze.</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <p class="price">
+                    <span class="price-label">Compenso della consulenza online</span>
+                    <span class="price-value">€ 100</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- PERCORSO FAMILIARE -->
+        <section id="percorso" class="sec sec--paper">
+            <div class="container-lg">
+                <div class="sec-head">
+                    <p class="eyebrow">Il percorso</p>
+                    <span class="sec-rule" aria-hidden="true"></span>
+                </div>
+
+                <h2 class="sec-title">Ti affianco in ogni fase del percorso familiare</h2>
+
+                <div class="measure measure--lead measure--center">
+                    <p>La separazione e il divorzio non sono un singolo evento, ma un percorso che coinvolge aspetti
+                        giuridici, personali e familiari destinati a evolversi nel tempo. Per questo offro
+                        un'assistenza legale continuativa, pensata per accompagnarti nelle decisioni più importanti con
+                        chiarezza e continuità.</p>
+                </div>
+
+                <ol class="fasi">
+                    <li class="fase">
+                        <span class="fase-when">Prima</span>
+                        <div class="fase-body">
+                            <h3>Prima della separazione o del divorzio</h3>
+                            <p>Per valutare le possibili soluzioni, comprendere le conseguenze delle diverse scelte e
+                                costruire la strategia più adatta alla tua situazione.</p>
+                        </div>
+                    </li>
+                    <li class="fase">
+                        <span class="fase-when">Durante</span>
+                        <div class="fase-body">
+                            <h3>Durante la separazione o il divorzio</h3>
+                            <p>Per tutelare i tuoi diritti e quelli dei tuoi figli, favorendo, quando possibile,
+                                soluzioni condivise e sostenibili.</p>
+                        </div>
+                    </li>
+                    <li class="fase">
+                        <span class="fase-when">Dopo</span>
+                        <div class="fase-body">
+                            <h3>Dopo la separazione o il divorzio</h3>
+                            <p>Per gestire le esigenze che possono emergere nel tempo: modifica delle condizioni di
+                                separazione o divorzio, affidamento e mantenimento dei figli, trasferimenti, nuove
+                                esigenze familiari e ogni altra questione connessa all'evoluzione dei rapporti
+                                familiari.</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="measure measure--center">
+                    <p class="mb-4">Prenota una consulenza online o in studio e scopri come posso supportarti nel
+                        percorso più adatto alla tua situazione.</p>
+                    <a href="#contatti" class="btn-ink">Prenota una consulenza</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHI SONO -->
+        <section id="chi-sono" class="sec sec--white">
+            <div class="container-lg">
+                <div class="sec-head">
+                    <p class="eyebrow">Chi sono</p>
+                    <span class="sec-rule" aria-hidden="true"></span>
+                </div>
+
+                <div class="bio">
+                    <div class="bio-text">
+                        <h2 class="sec-title">Avv. Maria Mercedes Maniglia</h2>
+
+                        <p>Sono un <strong>avvocato civilista</strong>, laureata presso l'Università degli Studi di
+                            Salerno. Nel corso della mia formazione ho settorializzato i miei studi nell'ambito del
+                            Diritto della Persona, delle Relazioni familiari e dei Minorenni.</p>
+
+                        <p>Mi occupo di separazioni, divorzi, affidamento dei figli e amministrazione di sostegno, con
+                            particolare attenzione alla gestione consapevole del conflitto e alla tutela delle persone
+                            più vulnerabili.</p>
+
+                        <p>La mia formazione integra la competenza giuridica con quella della mediazione familiare. Sono
+                            <strong>mediatrice familiare sistemico-relazionale</strong> e sono iscritta all'elenco dei
+                            mediatori familiari del Tribunale di Salerno. L'approccio maturato attraverso l'integrazione
+                            tra competenze giuridiche e mediazione familiare mi consente di affrontare le situazioni
+                            familiari più complesse considerando non solo gli aspetti giuridici, ma anche le dinamiche
+                            relazionali coinvolte.
+                        </p>
+
+                        <p>Ho maturato una specifica esperienza nell'ambito della tutela dei minori, anche attraverso la
+                            formazione come <strong>curatrice speciale del minore</strong> e la collaborazione in
+                            contesti interdisciplinari con professionisti di diverse aree.</p>
+
+                        <p class="bio-close">Credo in un'assistenza legale che coniughi competenza giuridica, ascolto e
+                            attenzione alla persona. Ogni situazione familiare è diversa e richiede soluzioni costruite
+                            sulle esigenze concrete di chi la vive.</p>
                     </div>
-                </div>
 
-                <div class="col-12 col-md-6 col-xxl-5 text-center">
-                    <img src="src/images/avv-mmm-chi-sono.jpg" alt="Avvocato Maria Mercedes Maniglia"
-                        class="img-fluid rounded shadow-sm chi-sono-img">
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- APPROCCIO -->
-    <section id="approccio" class="bg-section-gradient">
-        <div class="container-lg">
-            <h2 class="section-title text-center mb-3">Il Mio Approccio</h2>
-            <p class="section-subtitle text-center mb-5">Metodo di lavoro</p>
-
-            <div class="d-flex flex-column flex-md-row gap-4 align-items-stretch">
-                <div class="card-approccio flex-fill">
-                    <h3>Ascolto e analisi del caso</h3>
-                    <p class="mb-0">Ogni situazione viene valutata nella sua specificità, con un’analisi concreta degli
-                        obiettivi e delle criticità.</p>
-                </div>
-                <div class="card-approccio flex-fill">
-                    <h3>Gestione del conflitto</h3>
-                    <p class="mb-0">Quando possibile, privilegio soluzioni condivise e strumenti stragiudiziali per
-                        ridurre tempi, costi e conflittualità.</p>
-                </div>
-                <div class="card-approccio flex-fill">
-                    <h3>Tutela dei minori</h3>
-                    <p class="mb-0">La protezione e il benessere dei minori rappresentano un principio centrale in ogni
-                        scelta difensiva e strategica.</p>
+                    <figure class="bio-figure">
+                        <img src="src/images/avv-mmm-chi-sono.jpg"
+                            alt="Ritratto dell'avvocato Maria Mercedes Maniglia" width="944" height="1132">
+                    </figure>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- DI COSA MI OCCUPO -->
-    <section id="aree" class="bg-section-flat">
-        <div class="container-lg">
-            <h2 class="section-title text-center mb-3">Di Cosa Mi Occupo</h2>
-            <p class="section-subtitle text-center mb-5">Aree di attività</p>
+        <!-- APPROCCIO -->
+        <section id="approccio" class="sec sec--paper">
+            <div class="container-lg">
+                <div class="sec-head">
+                    <p class="eyebrow">Metodo</p>
+                    <span class="sec-rule" aria-hidden="true"></span>
+                </div>
 
-            <div class="row g-4 justify-content-center">
+                <h2 class="sec-title">Il mio approccio</h2>
 
-                <div class="col-12 col-md-6 col-lg-4 text-center">
-                    <div class="card-area h-100 d-flex flex-column align-items-center">
-                        <i class="bi bi-people card-area-icon mb-3"></i>
+                <div class="cards">
+                    <article class="card-principio">
+                        <!-- onde di ascolto verso un punto -->
+                        <svg class="principio-mark" viewBox="0 0 32 32" width="34" height="34" fill="none"
+                            stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"
+                            focusable="false">
+                            <path d="M6 8a13 13 0 0 1 0 16" />
+                            <path d="M12 11a7 7 0 0 1 0 10" />
+                            <circle cx="24" cy="16" r="2.6" />
+                        </svg>
+                        <h3>Ascolto e analisi del caso</h3>
+                        <p>Ogni situazione viene valutata nella sua specificità, con un'analisi concreta degli obiettivi
+                            e delle criticità.</p>
+                    </article>
+                    <article class="card-principio">
+                        <!-- due posizioni che convergono in un percorso solo -->
+                        <svg class="principio-mark" viewBox="0 0 32 32" width="34" height="34" fill="none"
+                            stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                            stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M4 7l10 9M4 25l10-9" />
+                            <path d="M14 16h14" />
+                        </svg>
+                        <h3>Gestione del conflitto</h3>
+                        <p>Quando possibile, privilegio soluzioni condivise e strumenti stragiudiziali per ridurre
+                            tempi, costi e conflittualità.</p>
+                    </article>
+                    <article class="card-principio">
+                        <!-- riparo sopra la persona tutelata -->
+                        <svg class="principio-mark" viewBox="0 0 32 32" width="34" height="34" fill="none"
+                            stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"
+                            focusable="false">
+                            <path d="M4 18a12 12 0 0 1 24 0" />
+                            <circle cx="16" cy="24" r="3.2" />
+                        </svg>
+                        <h3>Tutela dei minori</h3>
+                        <p>La protezione e il benessere dei minori rappresentano un principio centrale in ogni scelta
+                            difensiva e strategica.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- AREE DI ATTIVITÀ -->
+        <section id="aree" class="sec sec--white">
+            <div class="container-lg">
+                <div class="sec-head">
+                    <p class="eyebrow">Aree di attività</p>
+                    <span class="sec-rule" aria-hidden="true"></span>
+                </div>
+
+                <h2 class="sec-title">Di cosa mi occupo</h2>
+
+                <ul class="aree">
+                    <li>
                         <h3>Separazioni e divorzi</h3>
-                        <p class="mb-0">Assistenza nei procedimenti consensuali e giudiziali, con gestione degli aspetti
-                            personali e patrimoniali.</p>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 text-center">
-                    <div class="card-area h-100 d-flex flex-column align-items-center">
-                        <i class="bi bi-shield-check card-area-icon mb-3"></i>
-                        <h3>Amministrazione di sostegno</h3>
-                        <p class="mb-0">Assistenza nei procedimenti di nomina, gestione e revoca dell’amministratore di
-                            sostegno, con supporto nelle attività di protezione delle persone fragili.</p>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 text-center">
-                    <div class="card-area h-100 d-flex flex-column align-items-center">
-                        <i class="bi bi-person-heart card-area-icon mb-3"></i>
+                        <p>Assistenza nei procedimenti consensuali e giudiziali, con attenzione agli aspetti personali e
+                            patrimoniali e supporto continuativo nelle fasi precedenti, durante e successive alla
+                            separazione.</p>
+                    </li>
+                    <li>
                         <h3>Affidamento e responsabilità genitoriale</h3>
-                        <p class="mb-0">Tutela dei diritti dei figli e definizione dei rapporti genitoriali.</p>
-                    </div>
-                </div>
+                        <p>Assistenza nella regolamentazione dell'affidamento, del mantenimento e dell'esercizio della
+                            responsabilità genitoriale, con particolare attenzione alla tutela dei diritti dei figli.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Mediazione familiare</h3>
+                        <p>Percorsi di mediazione familiare con approccio sistemico-relazionale, finalizzati a favorire
+                            il dialogo e la costruzione di accordi condivisi.</p>
+                    </li>
+                    <li>
+                        <h3>Amministrazione di sostegno</h3>
+                        <p>Assistenza nei procedimenti di nomina, modifica e revoca dell'amministratore di sostegno, con
+                            tutela degli interessi personali e patrimoniali delle persone fragili.</p>
+                    </li>
+                    <li>
+                        <h3>Collaborazione interdisciplinare</h3>
+                        <p>Collaborazione con professionisti di diverse discipline nei procedimenti che coinvolgono
+                            minori, per offrire un supporto integrato nelle situazioni familiari più complesse.</p>
+                    </li>
+                    <li>
+                        <h3>Gratuito patrocinio</h3>
+                        <p>Assistenza nei casi in cui ricorrano i requisiti previsti dalla legge per l'ammissione al
+                            patrocinio a spese dello Stato.</p>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ESPERIENZA -->
-    <section id="esperienza" class="bg-section-gradient">
-        <div class="container-lg">
-            <div class="d-flex flex-column flex-lg-row gap-5 align-items-start">
-
-                <div class="flex-fill w-100">
-                    <h2 class="section-title section-title-left text-center text-lg-start mb-2">Attività Professionale</h2>
-                    <p class="section-subtitle text-center text-lg-start mb-4">Esperienza e collaborazione</p>
-                    <p class="mb-2">La mia attività è focalizzata sulla tutela del minore e sulla gestione consapevole
-                        dei
-                        conflitti familiari, anche in situazioni ad elevata complessità.</p>
-                    <p class="mb-4">
-                        Mi occupo di separazioni,
-                        divorzi e
-                        delle principali controversie familiari, offrendo assistenza continuativa sia nella fase
-                        precedente
-                        che successiva alla separazione. In particolare:
-                    </p>
-                    <ul class="esperienze-list">
-                        <li>Gestione completa di procedimenti di separazione e
-                            divorzio</li>
-                        <li>Attività di mediazione familiare con approccio sistemico-relazionale</li>
-                        <li>Assistenza in regime di gratuito patrocinio</li>
-                        <li>Attività in contesti di équipe multidisciplinare, con integrazione tra competenze
-                            giuridiche, psicologiche e socio-assistenziali</li>
-                        <li>Assistenza continuativa nelle fasi pre e post separazione</li>
-                    </ul>
+        <!-- CONTATTI -->
+        <section id="contatti" class="sec sec--paper">
+            <div class="container-lg">
+                <div class="sec-head">
+                    <p class="eyebrow">Contatti</p>
+                    <span class="sec-rule" aria-hidden="true"></span>
                 </div>
 
-                <div class="flex-fill w-100 competenze-col">
-                    <h2 class="section-title section-title-left text-center text-lg-start mb-2">Competenze Chiave</h2>
-                    <p class="section-subtitle text-center text-lg-start mb-4">Aree di specializzazione</p>
-                    <div class="d-flex flex-wrap gap-2 pt-2 justify-content-center justify-content-lg-start">
-                        <span class="tag">Diritto di famiglia</span>
-                        <span class="tag">Separazioni e divorzi</span>
-                        <span class="tag">Affidamento minori</span>
-                        <span class="tag">Mediazione familiare</span>
-                        <span class="tag">Tutela dei minori</span>
-                        <span class="tag">Amministrazione di sostegno</span>
-                        <span class="tag">Gratuito patrocinio</span>
+                <h2 class="sec-title">Hai bisogno di assistenza legale in materia familiare?</h2>
+
+                <div class="measure measure--lead measure--center">
+                    <p>Scrivimi indicando brevemente la tua situazione familiare: ti risponderò per concordare giorno e
+                        orario della consulenza.</p>
+                </div>
+
+                <dl class="contatti">
+                    <div>
+                        <dt>Telefono</dt>
+                        <dd><a href="tel:+393495934268">+39 349 593 4268</a></dd>
                     </div>
-                </div>
-
+                    <div>
+                        <dt>E-mail</dt>
+                        <dd><a href="mailto:studiomaniglia@gmail.com">studiomaniglia@gmail.com</a></dd>
+                    </div>
+                    <div>
+                        <dt>PEC</dt>
+                        <dd><a
+                                href="mailto:avvmariamercedesmaniglia@pec.ordineforense.salerno.it">avvmariamercedesmaniglia@<wbr>pec.ordineforense.salerno.it</a>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Studio</dt>
+                        <dd>
+                            <address>Via Zara, 4 &mdash; 84091 Battipaglia (SA)</address>
+                        </dd>
+                    </div>
+                </dl>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contatti" class="cta-finale text-center">
-        <div class="container-lg">
-            <h2 class="section-title mb-3">Hai bisogno di assistenza legale in materia familiare?</h2>
-            <p class="section-subtitle text-center mb-5">Contattami per una consulenza</p>
-
-            <div class="row g-4">
-                <div class="col-12 col-sm-6 col-xxl-3">
-                    <div class="card-contatto">
-                        <i class="bi bi-telephone card-area-icon mb-3"></i>
-                        <p class="mb-0">+39 349 593 4268</p>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-xxl-3">
-                    <div class="card-contatto">
-                        <i class="bi bi-envelope card-area-icon mb-3"></i>
-                        <p class="mb-0">studiomaniglia@gmail.com</p>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-xxl-3">
-                    <div class="card-contatto">
-                        <i class="bi bi-envelope-check card-area-icon mb-3"></i>
-                        <p class="mb-0">avvmariamercedesmaniglia<br>@pec.ordineforense.salerno.it</p>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-xxl-3">
-                    <div class="card-contatto">
-                        <i class="bi bi-geo-alt card-area-icon mb-3"></i>
-                        <p class="mb-0">Via Zara, 4<br>84091 Battipaglia (SA)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <footer>
-        <div class="container text-center">
-            <p class="m-0 text-white">&copy; 2026 Avv. Maria Mercedes Maniglia. Tutti i diritti riservati.</p>
+        <div class="container-lg">
+            <p>&copy; 2026 Avv. Maria Mercedes Maniglia. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
     <button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Torna su">
-        <i class="bi bi-arrow-up"></i>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+            <path d="M12 19V5M12 5l-7 7M12 5l7 7" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -260,22 +381,17 @@
             link.addEventListener('click', function () {
                 var navCollapse = document.getElementById('navMenuStudio');
                 var bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
-                if (bsCollapse) {
-                    bsCollapse.hide();
-                }
+                if (bsCollapse) { bsCollapse.hide(); }
             });
         });
 
         var scrollTopBtn = document.getElementById('scrollTopBtn');
         window.addEventListener('scroll', function () {
-            if (window.scrollY > 400) {
-                scrollTopBtn.classList.add('show');
-            } else {
-                scrollTopBtn.classList.remove('show');
-            }
-        });
+            scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+        }, { passive: true });
         scrollTopBtn.addEventListener('click', function () {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
         });
     </script>
 </body>
