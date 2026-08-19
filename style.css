@@ -485,37 +485,6 @@ header {
     margin-bottom: 0;
 }
 
-/* ---------- Prezzo, dentro il passo 2 ---------- */
-
-.price {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.3rem;
-    margin: 1.35rem 0 0;
-    padding-top: 1.1rem;
-    border-top: 1px solid var(--rule);
-}
-
-.price-label {
-    font-family: var(--font-body);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-}
-
-.price-value {
-    font-family: var(--font-display);
-    /* misura fissa: sta dentro un pannello a scomparsa, la larghezza
-       disponibile non varia abbastanza da giustificare un clamp */
-    font-size: 1.875rem;
-    font-weight: 600;
-    line-height: 1;
-    color: var(--ink);
-}
-
 /* ---------- Fasi del percorso ---------- */
 
 .fasi {
@@ -763,8 +732,8 @@ header {
     font-family: var(--font-display);
     font-size: 1.08rem;
     color: var(--text-main);
-    /* break-word e non anywhere: spezza solo se serve e mai a metà
-       parola quando esiste un punto di rottura migliore (il <wbr> dopo @) */
+    /* rete di sicurezza per l'indirizzo e-mail sui 320px: break-word e non
+       anywhere, così non spezza mai a metà parola se c'è di meglio */
     overflow-wrap: break-word;
 }
 
@@ -786,15 +755,18 @@ header {
 
 @media (min-width: 768px) {
     .contatti {
+        /* due sole voci: a tutta larghezza il blocco si sfilaccia. Si stringe
+           sul contenuto e si centra; il testo resta a sinistra perche' i
+           filetti coprono la colonna intera.
+           fit-content e non una misura fissa: con 1fr le due colonne si
+           pareggiano sulla piu' larga, quindi la larghezza segue il font
+           davvero usato e l'indirizzo non puo' andare a capo nemmeno se
+           Spectral non e' ancora stato caricato */
+        width: fit-content;
+        max-width: 100%;
+        margin-inline: auto;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: 3.5rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .contatti {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        column-gap: 3rem;
     }
 }
 
