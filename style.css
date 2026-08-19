@@ -842,6 +842,47 @@ header {
     }
 }
 
+/* ---------- 404 ---------- */
+
+/* La 404 ha una sola sezione: senza questo il footer resta a mezza altezza
+   sugli schermi alti, con il fondo del body scoperto sotto. Classe sul body
+   e non :has(), cosi' non dipende dal supporto del selettore */
+.pagina-404 {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.pagina-404 main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* cresce insieme a main: se no il gradiente finisce con il contenuto e
+   resta una fascia bianca di body scoperto prima del footer */
+.sec--404 {
+    flex: 1 0 auto;
+}
+
+/* il paragrafo e' :last-child dentro .measure, quindi ha margin-bottom 0
+   e il bottone gli finiva attaccato */
+.sec--404 .btn-ink {
+    margin-top: 2.25rem;
+}
+
+/* nella 404 l'header ha il solo nome: Bootstrap mette space-between sul
+   contenitore della navbar, che con un elemento solo lo spinge a sinistra */
+.pagina-404 header .container-lg {
+    justify-content: center;
+}
+
+/* .navbar-brand di Bootstrap porta margin-right: 1rem, e il flex centra la
+   scatola margini compresi: senza azzerarlo il nome resta 8px a sinistra */
+.pagina-404 .navbar-brand {
+    margin-right: 0;
+}
+
 /* ---------- Footer ---------- */
 
 footer {
