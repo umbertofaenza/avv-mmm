@@ -358,6 +358,37 @@ header {
     margin-bottom: 0;
 }
 
+/* A colonna singola l'introduttivo si allinea a quelli di percorso e contatti:
+   stesso 78ch e stesso centraggio di .measure--lead + .measure--center, che
+   qui non si possono riusare come classi perche' a due colonne il testo torna
+   a sinistra. Il 78ch e' calcolato sul font del paragrafo, 1.18rem: sono gli
+   stessi 858px degli altri due. Se un giorno si stringe .measure--lead verso
+   i 90 caratteri, questa regola va stretta insieme. */
+@media (max-width: 991px) {
+    .consulenze-testo p {
+        max-width: 78ch;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    /* A tutta larghezza il chevron finiva a 682px dal titolo che apre, mentre
+       il contenuto della riga ne occupa 262, e il testo dei passi girava a
+       ~100 caratteri. 62ch e' la misura di lettura del progetto e riavvicina
+       l'accordion ai ~518px che ha nella colonna desktop */
+    .consulenze-operativo {
+        max-width: 62ch;
+        margin-inline: auto;
+    }
+
+    /* da inline-block a blocco a larghezza contenuto: si centra da solo
+       senza dover centrare il testo del contenitore */
+    .consulenze-operativo .btn-ink {
+        display: block;
+        width: fit-content;
+        margin-inline: auto;
+    }
+}
+
 .consulenze-operativo .btn-ink {
     margin-top: 2.25rem;
 }
@@ -449,7 +480,16 @@ header {
 }
 
 .passo-corpo {
-    padding: 0 0 1.35rem calc(1.35rem + 1.15rem);
+    padding: 0 0 1.35rem;
+}
+
+/* Il rientro allinea il testo al titolo del passo: 1.35rem del numero piu'
+   1.15rem del gap del summary. Da 768 in su e' giusto, sotto sono 40px su
+   342, il 12% della larghezza sottratto al testo piu' operativo del sito */
+@media (min-width: 768px) {
+    .passo-corpo {
+        padding-left: calc(1.35rem + 1.15rem);
+    }
 }
 
 /* Apertura morbida. Dove il browser non supporta ::details-content
@@ -515,9 +555,10 @@ header {
     padding-top: 0.35rem;
 }
 
-.fase-body {
-    max-width: 62ch;
-}
+/* .fase-body non ha un cap di larghezza, di proposito: sotto i 992 il testo
+   deve arrivare al filetto, che attraversa tutta la sezione, e fermarlo prima
+   lasciava fino a 167px di vuoto a destra. Sopra i 992 le tre fasi sono
+   colonne da ~350px, dove un cap a 62ch non morderebbe comunque */
 
 .fase h3 {
     margin: 0 0 0.6rem;
@@ -575,7 +616,16 @@ header {
 }
 
 .bio-text {
-    max-width: 62ch;
+    max-width: none;
+}
+
+/* il nome sono 28 caratteri e .sec-title taglia a 24ch: a colonna singola
+   c'e' spazio, e andare a capo e' solo la regola generica che stringe.
+   Niente nowrap: sotto i ~700px non ci sta e deve poter spezzare.
+   Non usare #chi-sono: l'id batterebbe per specificita' il .bio .sec-title
+   che a due colonne rimette il cap a 18ch */
+.bio .sec-title {
+    max-width: none;
 }
 
 .bio-text p {
@@ -617,6 +667,10 @@ header {
         margin-left: 0;
         text-align: left;
         max-width: 18ch;
+    }
+
+    .bio-text {
+        max-width: 62ch;
     }
 
     .bio {
@@ -715,6 +769,11 @@ header {
 .contatti>div {
     padding: 1.5rem 0;
     border-top: 1px solid var(--rule);
+    /* a colonna singola le due voci seguono il resto della sezione, che e'
+       centrato: sono un'e-mail e un indirizzo, cioe' testo breve, l'unico
+       caso in cui il progetto ammette il centraggio. Da 768 in su tornano a
+       sinistra, dove stanno affiancate in due colonne */
+    text-align: center;
 }
 
 .contatti dt {
@@ -754,6 +813,10 @@ header {
 }
 
 @media (min-width: 768px) {
+    .contatti>div {
+        text-align: left;
+    }
+
     .contatti {
         /* due sole voci: a tutta larghezza il blocco si sfilaccia. Si stringe
            sul contenuto e si centra; il testo resta a sinistra perche' i
