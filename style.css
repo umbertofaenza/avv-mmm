@@ -617,6 +617,10 @@ header {
 
 .bio-text {
     max-width: none;
+    /* a colonna singola tutta la sezione sta su un asse centrato, foto
+       compresa. Torna a sinistra a due colonne, dove il testo affianca la
+       foto e il centraggio spezzerebbe la sponda fra le due */
+    text-align: center;
 }
 
 /* il nome sono 28 caratteri e .sec-title taglia a 24ch: a colonna singola
@@ -652,6 +656,10 @@ header {
     width: 100%;
     height: auto;
     max-width: 420px;
+    /* A colonna singola la foto si ferma a 420px e a sinistra lascerebbe fino
+       a 523px di vuoto a destra. Nessun reset sopra i 992: li' sta in una
+       colonna da 380px che riempie, quindi il centraggio e' gia' un no-op */
+    margin-inline: auto;
 }
 
 @media (min-width: 992px) {
@@ -671,6 +679,7 @@ header {
 
     .bio-text {
         max-width: 62ch;
+        text-align: left;
     }
 
     .bio {
