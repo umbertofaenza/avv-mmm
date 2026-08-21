@@ -261,6 +261,13 @@ header {
     max-width: 16ch;
 }
 
+/* il margine sotto serviva a staccare il bottone dell'hero, tolto su
+   richiesta della cliente. Con :last-child torna da solo se il bottone
+   viene rimesso, invece di restare uno spazio orfano */
+.lede:last-child {
+    margin-bottom: 0;
+}
+
 .lede {
     max-width: 34ch;
     margin: 0 auto 2.75rem;
