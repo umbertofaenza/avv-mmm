@@ -222,6 +222,45 @@ header {
     padding-top: clamp(9rem, 16vw, 13rem);
 }
 
+/* Di norma a separare le sezioni basta l'alternanza dei fondi. Dove due
+   sezioni adiacenti condividono il tono - oggi solo #genitorialita e
+   #consulenze, che sono le due offerte prenotabili e stanno insieme di
+   proposito - il confine lo segna un filetto. Scritto come condizione e non
+   sul singolo id: se la coppia cambia o si scioglie, il filetto la segue.
+   Il padding delle due sezioni lo lascia simmetrico, 128px sopra e sotto */
+.sec--white + .sec--white > .container-lg,
+.sec--paper + .sec--paper > .container-lg {
+    position: relative;
+}
+
+/* Sta sul contenitore e non sulla sezione, che e' a tutta pagina: cosi' il
+   filetto e' largo quanto il testo, come quelli dentro #percorso e #contatti.
+   Risalito di --sec-pad, cioe' esattamente il padding della sezione, per
+   cadere sul confine invece che sopra il sopratitolo */
+.sec--white + .sec--white > .container-lg::before,
+.sec--paper + .sec--paper > .container-lg::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--sec-pad));
+    /* rientro pari al padding di .container-lg, che e' meta' della gutter di
+       Bootstrap: cosi' il filetto e' largo quanto il testo e non quanto la
+       scatola. Se quel padding cambia, va cambiato anche qui */
+    left: 12px;
+    right: 12px;
+    height: 1px;
+    background-color: var(--rule);
+}
+
+/* sotto i 992 il contenitore passa a 24px di padding, vedi in fondo al foglio */
+@media (max-width: 991px) {
+
+    .sec--white + .sec--white > .container-lg::before,
+    .sec--paper + .sec--paper > .container-lg::before {
+        left: 24px;
+        right: 24px;
+    }
+}
+
 /* ---------- Filetto-capitolo ---------- */
 
 .sec-head {
