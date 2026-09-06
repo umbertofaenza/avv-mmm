@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina non trovata &mdash; Avv. Maria Mercedes Maniglia</title>
 
+    <meta name="description" content="La pagina cercata non esiste. Torna al sito dell'Avv. Maria Mercedes Maniglia, diritto di famiglia e mediazione familiare a Battipaglia.">
+    <!-- una pagina di errore non va indicizzata: viene servita a qualunque
+         indirizzo inesistente, e ognuno diventerebbe un risultato -->
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Icone. Il tipo di file e' dichiarato perche' il .ico contiene tre misure -->
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#F8F1EF">
+
+
     <!-- Percorsi assoluti: questa pagina viene servita all'URL sbagliato che
          l'utente ha aperto, anche profondo, e un percorso relativo non
          risolverebbe. Caratteri e Bootstrap sono ospitati qui, senza richieste
@@ -18,7 +30,7 @@
 <body class="pagina-404">
 
     <header>
-        <nav class="navbar py-3">
+        <nav class="navbar py-3" aria-label="Navigazione principale">
             <div class="container-lg">
                 <a class="navbar-brand brand" href="/">Maria Mercedes Maniglia</a>
             </div>
@@ -47,7 +59,7 @@
     <footer>
         <div class="container-lg">
             <p>&copy; 2026 Avv. Maria Mercedes Maniglia. Tutti i diritti riservati.</p>
-            <p class="footer-link"><a href="/privacy.html">Privacy policy</a></p>
+            <p class="footer-link"><a href="/privacy/">Privacy policy</a></p>
         </div>
     </footer>
 
