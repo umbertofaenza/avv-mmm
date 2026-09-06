@@ -1003,3 +1003,150 @@ footer p {
         font-size: 0.88rem;
     }
 }
+
+/* ---------- Pagina informativa (privacy policy) ---------- */
+
+.sec--doc {
+    padding-bottom: clamp(5rem, 9vw, 8rem);
+}
+
+/* testo lungo: misura di lettura stretta e allineata a sinistra, non
+   centrata come i paragrafi brevi della home */
+.doc {
+    max-width: 68ch;
+    margin-inline: auto;
+    text-align: left;
+}
+
+.doc p,
+.doc li {
+    margin-bottom: 1.15rem;
+}
+
+.doc h2 {
+    margin: 3rem 0 1.1rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+}
+
+.doc h3 {
+    margin: 2rem 0 0.9rem;
+    font-size: 1.15rem;
+}
+
+.doc ul {
+    padding-left: 1.35rem;
+}
+
+.doc li {
+    margin-bottom: 0.7rem;
+}
+
+.doc a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 0.25s var(--ease);
+}
+
+.doc a:hover {
+    border-bottom-color: var(--ink);
+}
+
+.doc-intro {
+    font-size: 1.12rem;
+    line-height: 1.6;
+}
+
+.doc-data {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+.doc-dati {
+    list-style: none;
+    padding-left: 0;
+}
+
+.doc-dati li {
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--rule);
+}
+
+/* richiamo sui dati particolari: il fondo carta lo stacca dal corpo del
+   testo senza introdurre un colore nuovo nella palette */
+.doc-avviso {
+    padding: 1.5rem 1.6rem;
+    background-color: var(--paper);
+    border-left: 3px solid var(--ink);
+}
+
+/* la tabella scorre da sola sotto i 520px invece di allargare la pagina */
+.doc-tabella-wrap {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+.doc-tabella {
+    width: 100%;
+    min-width: 30rem;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.doc-tabella th,
+.doc-tabella td {
+    padding: 0.9rem 1rem 0.9rem 0;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule-soft);
+}
+
+.doc-tabella th {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom-color: var(--ink);
+}
+
+.doc-tabella td:first-child {
+    padding-right: 2rem;
+    color: var(--text-main);
+}
+
+/* segnaposto da sostituire prima della pubblicazione: deliberatamente
+   vistoso, cosi non puo restare per distrazione */
+.da-completare {
+    padding: 0.1em 0.45em;
+    background-color: #FFF3CD;
+    border-bottom: 2px solid #B8860B;
+    color: #4A3B00;
+    font-weight: 600;
+    /* niente nowrap: i segnaposti lunghi sfondavano il contenitore a 320px */
+    overflow-wrap: break-word;
+}
+
+.footer-link {
+    margin-top: 0.6rem;
+}
+
+.footer-link a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.footer-link a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
